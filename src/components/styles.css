@@ -1,7 +1,7 @@
 .input {
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 95%;
   position: relative;
 }
 
@@ -49,25 +49,35 @@
 .tasksList {
   display: flex;
   justify-content: space-evenly;
-  width: 90%;
+  width: 95%;
   flex-wrap: wrap;
   padding-left: 0;
 }
 
 .tasks-single {
   display: flex;
+  align-items: center;
   border-radius: 5px;
   padding: 20px;
   margin-top: 15px;
   background-color: rgb(245, 245, 7);
-  transition: 0.2s;
+  width: 29.5%;
+}
+
+.tasks-input {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+  color: rgb(52, 44, 108);
+  outline: none;
 }
 
 .tasks-single-text {
   flex: 1;
   padding: 5px;
   border: none;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(52, 44, 108);
 }
 

@@ -15,9 +15,11 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
   const [editTask, setEditTask] = useState<string>(task.task);
 
   const handleEdit = () => {
+    console.log(edit);
     if (!edit && !task.fixed) {
       setEdit(!edit);
     }
+    console.log(edit);
   };
 
   const handleSubmit = (e: React.FormEvent, id: number) => {
@@ -25,6 +27,7 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
     if (editTask.trim() === "") {
       window.alert("Please enter valid task");
       setEdit(true);
+      setEditTask("");
     } else {
       setTasks(
         tasks.map((task) =>
@@ -44,14 +47,12 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
   };
 
   const handleDelete = (id: number) => {
-    if (task) {
-      if (tasks.find((t) => t.task)) {
-        if (window.confirm(`Do you want to delete "${task.task}"`)) {
-          setTasks(tasks.filter((t) => t.id !== id));
-        }
-      } else {
+    if (task.fixed) {
+      if (window.confirm(`Do you want to delete "${editTask}"`)) {
         setTasks(tasks.filter((t) => t.id !== id));
       }
+    } else {
+      window.alert(`First strike off the "${task.task}"`);
     }
   };
 
@@ -78,8 +79,8 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
 
       {/* <s></s>  means the text will strike off*/}
       <div>
-        <span className="icon">
-          <AiFillEdit onClick={handleEdit} />
+        <span className="icon" onClick={handleEdit}>
+          <AiFillEdit />
         </span>
         {task.fixed ? (
           <span className="icon" onClick={() => handleFixed(task.id)}>
