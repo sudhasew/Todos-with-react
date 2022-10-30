@@ -52,7 +52,9 @@ const SingleTask = ({ task, tasks, setTasks }: Props) => {
         setTasks(tasks.filter((t) => t.id !== id));
       }
     } else {
-      window.alert(`First strike off the "${task.task}"`);
+      if (window.confirm(`Did you complete your "${task.task}"`)) {
+        setTasks(tasks.filter((t) => t.id !== id));
+      }
     }
   };
 
